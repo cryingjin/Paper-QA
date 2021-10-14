@@ -2,4 +2,7 @@
 *.zip
 *.json
 data/
+*.xml
+.idea/
+
 
