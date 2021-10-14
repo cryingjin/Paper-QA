@@ -77,12 +77,44 @@ def split_dataset(input_json, output_dir, train_ratio, random_seed):
     with open(output_test_json, 'w', encoding="utf-8", errors='ignore') as test_writer:
         json.dump(test, test_writer)
 
-    # with open(output_file, "w", encoding="utf-8") as writer:
-    #     writer.write(json.dumps(outputs, indent=4, ensure_ascii=False) + "\n")
+
+# train_data 나눠놓기
+def split_train_dataset(input_json, output_dir, split_nums, random_seed):
+    random.seed(random_seed)
+
+    with open(input_json) as json_reader:
+        dataset = json.load(json_reader)["data"]
+
+    data_ids = [x.get('doc_id') for x in dataset]
+    data_ids.sort()
+    random.shuffle(data_ids)
+
+    split_span = int(len(data_ids)/split_nums)
+    split_start = 0
+    for i in range(0,split_nums):
+
+        data_ids_train = set(data_ids[split_start:]) if i == split_nums else set(data_ids[split_start:split_start+split_span+1])
+        split_data = [x for x in dataset if x.get('doc_id') in data_ids_train]
+        split_start += split_span
+        split_train_data = {
+            'version':'paper-qa-v1',
+            'data': split_data,
+        }
+
+        output_seed_dir = os.path.join(output_dir,'split_train')
+        os.makedirs(output_seed_dir, exist_ok=True)
+        output_train_json = os.path.join(output_seed_dir, f'train_{i}.json')
+
+        print(f'write {output_train_json}')
+        with open(output_train_json, 'w', encoding="utf-8", errors='ignore') as train_writer:
+            train_writer.write(json.dumps(split_train_data, indent=4, ensure_ascii=False) + "\n")
 
 
-# # 사용 데이터 전체 합치기
-# combine_dataset(DATA_DIR, "papers_qa")
+
+
+
+# 사용 데이터 전체 합치기
+combine_dataset(DATA_DIR, "papers_qa")
 
 # train/validation/test 나눠서 저장
 split_dataset(os.path.join(DATA_DIR,"papers_qa.json"), DATA_DIR, train_ratio=0.8, random_seed=42)
@@ -90,4 +122,8 @@ split_dataset(os.path.join(DATA_DIR,"papers_qa.json"), DATA_DIR, train_ratio=0.8
 # # 불러오기
 # with open(os.path.join(DATA_DIR,"seed42","train.json"), "r", encoding="utf-8") as f:
 #     data = json.load(f)
-#     print(data[0])
+#     # print(data[0])
+
+# train 분할하기
+split_train_dataset(os.path.join(DATA_DIR,"seed42","train.json"), os.path.join(DATA_DIR,"seed42"), split_nums=80, random_seed=42)
+

@@ -11,13 +11,14 @@ from transformers import (
 # from transformers.data.processors.squad import SquadResult
 # from src.functions.squad_metrics import compute_predictions_logits
 from src.functions.processor import SquadResult
-from src.functions.utils import load_examples, set_seed, to_list
+from src.functions.utils import load_examples, load_and_cache_examples, set_seed, to_list
 from src.functions.evaluate import squad_evaluate
 
 
 def train(args, model, tokenizer, logger):
 
-    train_dataset = load_examples(args, tokenizer, evaluate=False, output_examples=False)
+    # train_dataset = load_examples(args, tokenizer, evaluate=False, output_examples=False)
+    train_dataset = load_and_cache_examples(args, tokenizer, evaluate=False, output_examples=False)
     train_sampler = RandomSampler(train_dataset)
     train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
 
@@ -121,7 +122,7 @@ def train(args, model, tokenizer, logger):
 
 def evaluate(args, model, tokenizer, logger, global_step = ""):
 
-    dataset, examples, features = load_examples(args, tokenizer, evaluate=True, output_examples=True)
+    dataset, examples, features = load_and_cache_examples(args, tokenizer, evaluate=True, output_examples=True)
 
     eval_sampler = SequentialSampler(dataset)
     eval_dataloader = DataLoader(dataset, sampler=eval_sampler, batch_size=args.eval_batch_size)
