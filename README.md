@@ -73,7 +73,8 @@
 
 ---
 
-## 4줄요약
+## 5줄요약
+- `processor.py` 실행 : 랜덤샘플링한 데이터 파일로 ###_pre.json 파일 생성
 - `main.py` 실행 : ###_pre.json 파일로 ###_keyword.json 파일 생성
 - 검색 모델 실행 : 키워드 추출 모델이 드롭한 ###_keyword.json 파일로 ###_context.json 파일 생성
 - `evidence_processing.py`실행 : 검색모델이 드롭한 ###_context.json 파일로 ###_evidence.json 파일 생성
