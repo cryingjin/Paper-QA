@@ -51,6 +51,7 @@
 
     - `-- train_flag` True: 모델 학습
     - `-- trian_flag` False: 모델 평가 / 데모
+    - `-- data_dir` 모델의 결과 데이터 저장 위치
     - `-- save_dir` 학습된 모델 저장 위치
     - `-- load_dir` 학습된 모델 로드
 
