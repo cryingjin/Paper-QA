@@ -9,9 +9,15 @@
 │   └── evidence
 │       ├── ###_#_pre.json
 │       └── ###_#_evidence.json
+├── preproc
+│   ├── train_#_pre.json
+│   ├── val_#_pre.json
+│   ├── test_#_pre.json
+│   └── val_#_keyword.json
 ├── model
-│   └── roberta_proposed
+│   ├── roberta_proposed
 │        └── checkpoing-16883
+│   └── #_#_model.pt
 ├── src
 ├── requirements.txt
 ├── evidence_processing.py
@@ -20,18 +26,35 @@
 ```
 
 - data/train , data/val 에는 원본 논문 데이터를 랜덤샘플링한 파일들이 들어있음
+- preproc 에는 랜덤샘플링한 논문 데이터를 전처리한 파일들과 키워드 추출 모델의 결과를 포함한 새로운 데이터가 들어있음 → 새로운 데이터는 검색 모델의 입력 데이터로 사용 
 - data/evidence/###_pre.json 파일은 논문 데이터와 매칭되는 검색 모델 결과 데이터
 - evidence_processing.py 에서 ###_#_pre.json 파일을 가지고 mrc 모델을 위한 데이터로 정제 시킴 → data/evidence 디렉토리에 ###_#_evidence.json 생성
 - 학습/평가시 각 원본 데이터 파일과 해당하는 evidence.json 파일을 로드해서 사용
 
 ## 2. Model
+### 2-1. 키워드 추출 모델
+- 제안하는 방법으로 학습시키되, 제공받은 데이터의 10%를 랜덤샘플링한 데이터를 학습한 model
+- 코드는 src 디렉토리에 저장
+- 모델은 model 디렉토리에 저장
+- model/1_2000_model.pt → epoch 1, step 2000
 
+### 2-2. MRC 모델
 - 제안하는 방법으로 학습시키되, 제공받은 데이터의 10%를 랜덤샘플링한 데이터를 학습한 model
 - model/roberta_proposed/checkpoint-16883
 - 모델 및 코드는 src 디렉토리에 저장
 
 ## 3. 실행
+### 3-1. 키워드 추출 모델 
+- main.py 파일 실행
+- argument 설명
 
+
+    - `-- train_flag` True: 모델 학습
+    - `-- trian_flag` False: 모델 평가 / 데모
+    - `-- save_dir` 학습된 모델 저장 위치
+    - `-- load_dir` 학습된 모델 로드
+
+### 3-2. MRC 모델
 - run_mrc.py 파일 실행
 - argument 설명
     
@@ -50,7 +73,8 @@
 
 ---
 
-## 3줄요약
-
-- `evidence_processing.py`실행 : 검색모델이 드롭한 ###_pre.json 파일로 ###_evidence.json 파일 생성
+## 4줄요약
+- `main.py` 실행 : 전처리한 ###_pre.json 파일로 ###_keyword.json 파일 생성
+- 검색 모델 실행 : 키워드 추출 모델이 드롭한 ###_keyword.json 파일로 ###_context.json 파일 생성
+- `evidence_processing.py`실행 : 검색모델이 드롭한 ###_context.json 파일로 ###_evidence.json 파일 생성
 - `run_mrc.py` 실행 : 학습 or 평가 or 데모
