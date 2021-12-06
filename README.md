@@ -26,7 +26,8 @@
 ```
 
 - data/train , data/val 에는 원본 논문 데이터를 랜덤샘플링한 파일들이 들어있음
-- preproc 에는 랜덤샘플링한 논문 데이터를 전처리한 결과인 ###_#_pre.json 파일들과 키워드 추출 모델의 결과를 포함한 ###_#_keyword.json 파일이 들어있음 
+- processor.py 에서 랜덤샘플링한 파일들을 가지고 데이터 전처리 → preproc 디렉토리에 ###_pre.json 파일 생성
+- preproc 에는 전처리된 데이터인 ###_pre.json 파일들과 키워드 추출 모델의 결과를 포함한 ###_keyword.json 파일이 들어있음 
 - data/evidence/###_pre.json 파일은 논문 데이터와 매칭되는 검색 모델 결과 데이터
 - evidence_processing.py 에서 ###_#_pre.json 파일을 가지고 mrc 모델을 위한 데이터로 정제 시킴 → data/evidence 디렉토리에 ###_#_evidence.json 생성
 - 학습/평가시 각 원본 데이터 파일과 해당하는 evidence.json 파일을 로드해서 사용
