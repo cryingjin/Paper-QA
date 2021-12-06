@@ -31,4 +31,4 @@
 
 - evidence_sent_retrieval.py 실행 → paragraph 검색
 - query를 입력하여 검색된 paragraph들 중, 키워드가 포함되어 있는 상위 10개의 paragraph 출력
-- 실행 결과로, filtered context를 반영한 ###_context.json 파일 생성
+- 실행 결과로, filtered context를 포함하는 ###_context.json 파일 생성
