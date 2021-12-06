@@ -15,8 +15,9 @@
 │   ├── test_#_pre.json
 │   └── val_#_keyword.json
 ├── model
-│   ├── roberta_proposed
+│   └── roberta_proposed
 │        └── checkpoing-16883
+├── models
 │   └── #_#_model.pt
 ├── src
 │   ├── main.py
@@ -39,8 +40,8 @@
 ### 2-1. 키워드 추출 모델
 - 제안하는 방법으로 학습시키되, 제공받은 데이터의 10%를 랜덤샘플링한 데이터를 학습한 model
 - 코드는 src 디렉토리에 저장
-- 모델은 model 디렉토리에 저장
-- model/1_2000_model.pt → epoch 1, step 2000
+- 모델은 models 디렉토리에 저장
+- models/1_2000_model.pt → epoch 1, step 2000
 
 ### 2-2. MRC 모델
 - 제안하는 방법으로 학습시키되, 제공받은 데이터의 10%를 랜덤샘플링한 데이터를 학습한 model
