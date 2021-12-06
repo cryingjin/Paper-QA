@@ -21,6 +21,7 @@
 │   └── #_#_model.pt
 ├── src
 │   ├── main.py
+│   ├── model.py
 │   ├── processor.py
 │   └── utils.py
 ├── requirements.txt
