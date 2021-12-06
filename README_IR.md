@@ -29,6 +29,6 @@
 - paper_documents.py 실행 → 문서 색인
 - 실행 결과로, documents 디렉토리 내 문서들을 색인한 결과 파일들이 index 디렉토리에 저장
 
-- evidence_sent_retrieval.py 실행
+- evidence_sent_retrieval.py 실행 → paragraph 검색
 - query를 입력하여 검색된 paragraph들 중, 키워드가 포함되어 있는 상위 10개의 paragraph 출력
 - 실행 결과로, filtered context가 포함된 ###_context.json 파일 생성
