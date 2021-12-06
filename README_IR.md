@@ -18,7 +18,7 @@
 
 - data에는 키워드 추출 모델의 결과를 반영한 ###_keyword.json 파일이 들어있음
 - paper_documents.py에서 ###_keyword.json 파일을 가지고 논문의 본문 내용을 세 문장씩(현재 문장 + 다음 두 문장) 문장 구분 및 형태소 분석하여 문서화 → documents 디렉토리에 저장
-- index 디렉토리에 document_index.py를 실행한 결과 파일이 들어있음
+- index 디렉토리에는 document_index.py를 실행한 결과 파일이 들어있음
 
 ## 2. Model
 - 논문 데이터의 본문 내용을 문서화한 후, 색인하여 검색하는 model
