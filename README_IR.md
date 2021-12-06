@@ -2,7 +2,7 @@
 
 ```
 ├── data
-│   └── val_#_keyword.json
+│   └── ###_keyword.json
 ├── documents
 ├── index
 │   ├── document_index
