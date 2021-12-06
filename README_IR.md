@@ -26,9 +26,13 @@
 - 코드는 src 디렉토리에 저장
 
 ## 3. 실행
-- paper_documents.py 실행 → 문서 색인
+### 3-1. 문서화
+- paper_documents.py 실행
+- 실행 결과로, documents 디렉토리에 문서화된 파일들 저장
+### 3-2. 문서 색인
+- paper_documents.py 실행
 - 실행 결과로, documents 디렉토리 내 문서들을 색인한 결과 파일들이 index 디렉토리에 저장
-
-- evidence_sent_retrieval.py 실행 → paragraph 검색
+### 3-3. paragraph 검색
+- evidence_sent_retrieval.py 실행 
 - query를 입력하여 검색된 paragraph들 중, 키워드가 포함되어 있는 상위 10개의 paragraph 출력
 - 실행 결과로, filtered context를 포함하는 ###_context.json 파일 생성
