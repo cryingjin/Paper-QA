@@ -17,7 +17,7 @@
 ```
 
 - data 디렉토리에는 원본 논문 데이터가 들어있음
-- documents 디렉토리에는 paper_documents.py를 실행한 결과인 형태소 분석된 Passage(현재 문장 + 다음 두 문장)가 저장된 파일들이 들어있음
+- documents 디렉토리에는 paper_documents.py를 실행한 결과인 형태소 분석된 Passage(현재 문장 + 다음 두 문장)들이 들어있음
 ```
 셋째, 본 연구에서는 온라인과 오프라인 방식을 모두 사용하여 설문조사를 하였다.
 셋째/NR+,/SP 보/VV+ㄴ/ETM 연구/NNG+에서/JKB+는/JX 온라인/NNG+과/JC 오프라인/NNG 방식/NNG+을/JKO 모두/MAG 사용/NNG+하/NNG+여/XSN 설문/NNG+조사/NNG+를/JKO 하/VV+았/EP+다/EF+./SF
