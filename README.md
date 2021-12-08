@@ -1,6 +1,6 @@
 ## 키워드를 활용한 기계 독해 모델 (Machine Reading Comprehension using Keywords)
-<img src = "https://user-images.githubusercontent.com/41279475/145188927-e6117cf1-8039-4686-86dd-b27164275d46.png" width="425"/> <img src = "https://user-images.githubusercontent.com/41279475/145188970-8d8a98f0-d6e5-4ec7-8892-77e5258d7e18.PNG" width="425"/>
-<img src = "https://user-images.githubusercontent.com/41279475/145188988-8400b006-7a0f-4374-bfb7-c340e9f3fec3.PNG" width="425"/> <img src = "https://user-images.githubusercontent.com/41279475/145188998-8ff7082c-607b-4338-87f1-580b57c96c23.PNG" width="425"/>
+<img src = "https://user-images.githubusercontent.com/41279475/145188927-e6117cf1-8039-4686-86dd-b27164275d46.png" width="400"/> <img src = "https://user-images.githubusercontent.com/41279475/145188970-8d8a98f0-d6e5-4ec7-8892-77e5258d7e18.PNG" width="400"/>
+<img src = "https://user-images.githubusercontent.com/41279475/145188988-8400b006-7a0f-4374-bfb7-c340e9f3fec3.PNG" width="400"/> <img src = "https://user-images.githubusercontent.com/41279475/145188998-8ff7082c-607b-4338-87f1-580b57c96c23.PNG" width="400"/>
 - [1. Directory and Pre-processing](#1-directory-and-pre-processing)
   * [1-1. 키워드 추출(Keyword Extraction) 모델](#1-1--------keyword-extraction----)
   * [1-2. 기계 독해(Machine Reading Comprehension; MRC) 모델](#1-2-------machine-reading-comprehension--mrc----)
