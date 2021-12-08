@@ -44,4 +44,5 @@
 ### 3-3. paragraph 검색
 - evidence_sent_retrieval.py 실행 
 - query를 입력하여 검색된 Passage 중, 키워드가 포함되어 있는 상위 10개의 Passage 출력
+- 상위 10개 Passage의 문장들을 원본 데이터의 순서에 맞게 정렬
 - 실행 결과로, data 디렉토리에 filtered context를 포함하는 ###_context.json 파일 생성
