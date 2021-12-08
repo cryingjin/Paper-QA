@@ -1,6 +1,9 @@
 ## 키워드를 활용한 기계 독해 모델 (Machine Reading Comprehension using Keywords)
 <img src = "https://user-images.githubusercontent.com/41279475/145188927-e6117cf1-8039-4686-86dd-b27164275d46.png" width="400"/> <img src = "https://user-images.githubusercontent.com/41279475/145188970-8d8a98f0-d6e5-4ec7-8892-77e5258d7e18.PNG" width="400"/>
 <img src = "https://user-images.githubusercontent.com/41279475/145188988-8400b006-7a0f-4374-bfb7-c340e9f3fec3.PNG" width="400"/> <img src = "https://user-images.githubusercontent.com/41279475/145188998-8ff7082c-607b-4338-87f1-580b57c96c23.PNG" width="400"/>
+
+- [Why](#why)
+- [Training Enviroment](#training-enviroment)
 - [1. Directory and Pre-processing](#1-directory-and-pre-processing)
   * [1-1. 키워드 추출(Keyword Extraction) 모델](#1-1--------keyword-extraction----)
   * [1-2. 기계 독해(Machine Reading Comprehension; MRC) 모델](#1-2-------machine-reading-comprehension--mrc----)
@@ -11,11 +14,16 @@
   * [3-1. 키워드 추출(Keyword Extraction) 모델](#3-1--------keyword-extraction----)
   * [3-2. 기계 독해(MRC) 모델](#3-2-------mrc----)
 ***
+## Why
+- 구축되어 있는 [국내 논문 QA 데이터셋](https://aida.kisti.re.kr/data/84710955-1e15-403b-9e1b-affcb4680b2d)을 이용해서 국내 논문 검색을 용이하게 하고자함
+- 기계 독해 모델 고도화를 위한 키워드 임베딩, 단서 문장 임베딩 기법을 제안
+***
 ## Training Enviroment
 - 각 모델 설정값 참고
 - RTX 8000 x 1
 - CUDA 10.2
 - [huggingface](https://huggingface.co/) 코드 참고
+***
 ## 1. Directory and Pre-processing
 ### 1-1. 키워드 추출(Keyword Extraction) 모델
 ```
@@ -120,18 +128,33 @@ python main.py
 - 모델 실행 결과로, 키워드 출력 레이블이 포함된 ###_keyword.json 파일 생성
 
 ### 3-2. 기계 독해(MRC) 모델
-**데모영상**
-![데모영상_0 (1)](https://user-images.githubusercontent.com/41279475/145186877-aa09ec79-2cb3-4b82-bdfa-f27522c3d864.gif)
+- requirements
 ```
 pip install -r requirements.txt
-python run_mrc.py
+```
+- Training
+```
+python run_mrc.py --do_train=True --from_init_weight=True dataset_nums=5  
+```
+- Evaluate
+```
+python run_mrc.py --do_eval=True --from_init_weight=False --predict_file=[val_#.json] --checkpoint=16883 --filtered_context=False
+```
+- Predict
+```
+python run_mrc.py --do_predict True --from_init_weight False --checkpoint=16883
 ```
 - argument 설명
     - 자세한 설정은 run_mrc.py 파일 참고
-    - `-- output_dir` 학습된 모델 저장 위치
-    - `-- checkpoint` 학습된 모델 checkpoint 16883
-    - `-- from_init_weight` True: pre trained roberta weight 로드
-    - `-- do_train` True : 모델 학습
-    - `-- do_eval` True : 모델 평가 
-    - `-- do_predict` 데모 실행, 현재 디폴트 값
+    - `-- output_dir` : 학습된 모델 저장 위치
+    - `-- dataset_num`: 학습할 파일 갯수
+    - `-- checkpoint` : 학습된 모델 checkpoint 16883
+    - `-- from_init_weight` : pre trained roberta weight 로드
+    - `-- filtered_context` : 검색모델이 만든 context 사용 (검색모델 예측 파일이 있어야함)
+    - `-- do_train` : 모델 학습
+    - `-- do_eval` : 모델 평가 
+    - `-- do_predict` : 데모 실행, 현재 디폴트 값
+
+**Demo Video**
+![데모영상_0 (1)](https://user-images.githubusercontent.com/41279475/145186877-aa09ec79-2cb3-4b82-bdfa-f27522c3d864.gif)
 ---
