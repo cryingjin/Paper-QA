@@ -130,19 +130,19 @@ python main.py
 ### 3-2. 기계 독해(MRC) 모델
 - requirements
 ```
-pip install -r requirements.txt
+$pip install -r requirements.txt
 ```
 - Training
 ```
-python run_mrc.py --do_train=True --from_init_weight=True dataset_nums=5  
+$python run_mrc.py --do_train=True --from_init_weight=True dataset_nums=5  
 ```
 - Evaluate
 ```
-python run_mrc.py --do_eval=True --from_init_weight=False --predict_file=[val_#.json] --checkpoint=16883 --filtered_context=False
+$python run_mrc.py --do_eval=True --from_init_weight=False --predict_file=[val_#.json] --checkpoint=16883 --filtered_context=False
 ```
 - Predict ⭐⭐
 ```
-python run_mrc.py --do_predict True --from_init_weight False --checkpoint=16883
+$python run_mrc.py --do_predict=True --from_init_weight=False --checkpoint=16883
 ```
 1. **Paper Context** : 논문 내용 입력
 2. **Question about the paper** : 논문 관련 질문 입력
