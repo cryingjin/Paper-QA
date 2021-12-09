@@ -118,7 +118,6 @@
 python main.py
 ```
 - argument 설명
-
     - `-- train_flag` True: 모델 학습
     - `-- trian_flag` False: 모델 평가 / 데모
     - `-- data_dir` 모델의 결과 데이터 저장 위치
@@ -128,21 +127,21 @@ python main.py
 - 모델 실행 결과로, 키워드 출력 레이블이 포함된 ###_keyword.json 파일 생성
 
 ### 3-2. 기계 독해(MRC) 모델
-- requirements
+**requirements**
 ```
-$pip install -r requirements.txt
+pip install -r requirements.txt
 ```
-- Training
+**Training**
 ```
-$python run_mrc.py --do_train=True --from_init_weight=True dataset_nums=5  
+python run_mrc.py --do_train=True --from_init_weight=True dataset_nums=5  
 ```
-- Evaluate
+**Evaluate**
 ```
-$python run_mrc.py --do_eval=True --from_init_weight=False --predict_file=[val_#.json] --checkpoint=16883 --filtered_context=False
+python run_mrc.py --do_eval=True --from_init_weight=False --predict_file=[val_#.json] --checkpoint=16883 --filtered_context=False
 ```
-- Predict ⭐⭐
+**Predict ⭐⭐**
 ```
-$python run_mrc.py --do_predict=True --from_init_weight=False --checkpoint=16883
+python run_mrc.py --do_predict=True --from_init_weight=False --checkpoint=16883
 ```
 1. **Paper Context** : 논문 내용 입력
 2. **Question about the paper** : 논문 관련 질문 입력
