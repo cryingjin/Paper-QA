@@ -28,38 +28,25 @@
 ### 1-1. 키워드 추출(Keyword Extraction) 모델
 ```
 ├── data
-│   ├── train
-│   │   └── train_#.json
-│   ├── val
-│   │   └── val_#.json
-│   └── evidence
-│       ├── ###_#_pre.json
-│       └── ###_#_evidence.json
-├── model
-│   └── roberta_proposed
-│        └── checkpoing-16883
+│   ├── train.json
+│   └── val.json
+├── init_weight
+├── models
+│   └── 1_2000_model.pt
+├── preproc
+│   ├── train_pre.json
+│   ├── val_pre.json
+│   └── ###_keyword.json
 ├── src
-│   ├── functions
-│   │   ├── evaluate.py
-│   │   ├── modules.py
-│   │   ├── mrc_metrics.py
-│   │   ├── processor_plus.py
-│   │   └── utils.py
-│   │
-│   └── model
-│       ├── main_functions.py
-│       ├── models.py
-│       └── roberta_model.py
-│ 
-├── ir
-│   ├── evidence_sent_retrieval.py
-│   └── processor.py
-│
+│   ├── main.py
+│   ├── model.py
+│   ├── processor.py
+│   └── utils.py
 ├── requirements.txt
-├── evidence_processing.py
 └── README.md
 ```
-- [설명 추가]
+- processor.py 에서 랜덤샘플링한 파일들을 가지고 데이터 전처리 → preproc 디렉토리에 ###_pre.json 파일 생성 
+- preproc 디렉토리에 키워드 모델 실행 결과 파일 ###_keyword.json 생성
 
 ### 1-2. 기계 독해(Machine Reading Comprehension; MRC) 모델
 ```
@@ -96,7 +83,6 @@
 └── README.md
 ```
 - data/train , data/val 에는 원본 논문 데이터를 랜덤샘플링(5%,10%)한 파일들이 들어있음
-- processor.py 에서 랜덤샘플링한 파일들을 가지고 데이터 전처리 → preproc 디렉토리에 ###_pre.json 파일 생성 
 - data/evidence/###_pre.json 파일은 논문 데이터와 매칭되는 검색 모델 결과 데이터
 - evidence_processing.py 에서 ###_#_pre.json 파일을 가지고 mrc 모델을 위한 데이터로 정제 시킴 → data/evidence 디렉토리에 ###_#_evidence.json 생성
 - 학습/평가시 각 원본 데이터 파일과 해당하는 evidence.json 파일을 로드해서 사용
